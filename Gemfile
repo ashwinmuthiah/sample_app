@@ -4,12 +4,12 @@ gem 'rails', '3.2.12'
 gem 'jquery-rails'
 gem 'jbuilder'
 gem 'turbolinks', '1.1.1'
+gem 'pg'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
-	gem 'sqlite3'
 	gem 'rspec-rails', '2.13.1'
 end
 
@@ -23,7 +23,6 @@ group :doc do
 end
 
 group :production do
-	gem 'pg'
 	gem 'rails_12factor', '0.0.2'
 end
 
