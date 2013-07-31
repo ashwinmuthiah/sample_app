@@ -86,4 +86,5 @@ RSpec.configure do |config|
   config.order = "random"
   # Added this and needed it for testing
   config.include Capybara::DSL
+  config.include RSpec::Rails::RequestExampleGroup, type: :feature
 end
