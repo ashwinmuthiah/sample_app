@@ -4,13 +4,17 @@ gem 'rails', '3.2.12'
 gem 'jquery-rails'
 gem 'jbuilder'
 gem 'turbolinks', '1.1.1'
-gem 'pg'
+gem 'sqlite3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
 	gem 'rspec-rails', '2.13.1'
+  gem 'guard-rspec', '2.5.0'
+  gem 'spork-rails', github: 'sporkrb/spork-rails'
+  gem 'guard-spork', '1.5.0'
+  gem 'childprocess', '0.3.6'
 end
 
 group :test do
