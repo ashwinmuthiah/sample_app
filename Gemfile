@@ -4,9 +4,12 @@ gem 'rails', '3.2.12'
 gem 'jquery-rails'
 gem 'jbuilder'
 gem 'turbolinks', '1.1.1'
-gem 'sqlite3'
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby', '3.0.1'
+
+group :development, :test do
+  gem 'sqlite3'
+end
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -30,6 +33,7 @@ end
 
 group :production do
 	gem 'rails_12factor', '0.0.2'
+  gem 'pg'
 end
 
 
