@@ -1,3 +1,18 @@
+step /^the user has an account$/ do
+	@user = User.create(name: "Example User", email: "user1@example.com", 
+		password: "foofoofoo", password_confirmation: "foofoofoo")
+end
+
+step /^the user visits the signin page$/ do
+	visit signin_path
+end
+
+step /^he submits valid signin information$/ do
+	fill_in "Email", with: @user.email
+	fill_in "Password", with: @user.password
+	click_button "Sign in"
+end
+
 Given /^a user visits the signin page$/ do
 	visit signin_path
 end
@@ -28,3 +43,28 @@ end
 Then /^he should see a signout link$/ do
 	expect(page).to have_link('Sign out', href: signout_path)
 end
+
+Given /^a user has an account$/ do
+	@user = User.create(name: "Example User", email: "user1@example.com", 
+		password: "foofoofoo", password_confirmation: "foofoofoo")
+end
+
+And /^he visits the signin page$/ do
+	visit signin_path
+end
+
+And /^he submits valid signin information$/ do
+	fill_in "Email", with: @user.email
+	fill_in "Password", with: @user.password
+	click_button "Sign in"
+end
+
+When /^a user visits the edit profile page$/ do
+	visit edit_user_path(@user)
+end
+
+Then /^he should see a settings link$/ do
+	expect(page).to have_link("Setting", href: edit_user_path(@user))
+end
+
+
