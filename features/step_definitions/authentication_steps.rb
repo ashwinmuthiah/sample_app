@@ -1,13 +1,13 @@
-step /^the user has an account$/ do
+Given /^the user has an account$/ do
 	@user = User.create(name: "Example User", email: "user1@example.com", 
 		password: "foofoofoo", password_confirmation: "foofoofoo")
 end
 
-step /^the user visits the signin page$/ do
+When /^the user visits the signin page$/ do
 	visit signin_path
 end
 
-step /^he submits valid signin information$/ do
+When /^he submits valid signin information$/ do
 	fill_in "Email", with: @user.email
 	fill_in "Password", with: @user.password
 	click_button "Sign in"
@@ -25,11 +25,6 @@ Then /^he should see an error message$/ do
 	expect(page).to have_selector('div.alert.alert-error')
 end
 
-Given /^the user has an account$/ do
-	@user = User.create(name: "Example User", email: "user1@example.com", 
-		password: "foofoofoo", password_confirmation: "foofoofoo")
-end
-
 When /^the user submits valid signin information$/ do
 	fill_in "Email", with: @user.email
 	fill_in "Password", with: @user.password
@@ -42,11 +37,6 @@ end
 
 Then /^he should see a signout link$/ do
 	expect(page).to have_link('Sign out', href: signout_path)
-end
-
-Given /^a user has an account$/ do
-	@user = User.create(name: "Example User", email: "user1@example.com", 
-		password: "foofoofoo", password_confirmation: "foofoofoo")
 end
 
 And /^he visits the signin page$/ do
@@ -67,4 +57,8 @@ Then /^he should see a settings link$/ do
 	expect(page).to have_link("Setting", href: edit_user_path(@user))
 end
 
-
+Given /^the user is logged in$/ do
+  step 'the user has an account'
+  step 'the user visits the signin page'
+  step 'he submits valid signin information'
+end
